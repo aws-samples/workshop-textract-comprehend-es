@@ -1,0 +1,9 @@
+# use this file to generate elasticlibs.zip to deploy as a Lambda layer 
+# pip install -r requirements.txt
+
+urllib3
+lxml
+elasticsearch
+aws-requests-auth
+requests-aws4auth
+
