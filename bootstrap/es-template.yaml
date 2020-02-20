@@ -220,7 +220,7 @@ Resources:
         Variables:
           LOG_LEVEL: INFO
       Handler: index.handler
-      Runtime: nodejs8.10
+      Runtime: nodejs12.x
       Timeout: 600
       Role:
         Fn::GetAtt:
