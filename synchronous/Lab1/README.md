@@ -47,10 +47,10 @@ In order to test the process, you need to upload an image in the *workshop-textr
 
 You can use one of those pictures:
 
- - [apollo11-summary.png](../documents/apollo11-summary.png) 
- - [apollo11.png](../documents/apollo11.png) which is slightly rotated
- - [apollo13.png](../documents/apollo13.png) with a 90 degree rotation
- - [apollo13-summary.png](../documents/apollo13-summary.png) which contains underlining and overlining of some text.
+ - [apollo11-summary.png](../../documents/apollo11-summary.png) 
+ - [apollo11.png](../../documents/apollo11.png) which is slightly rotated
+ - [apollo13.png](../../documents/apollo13.png) with a 90 degree rotation
+ - [apollo13-summary.png](../../documents/apollo13-summary.png) which contains underlining and overlining of some text.
 
 If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentTextract), you will be able to display the output of your lambda execution. You should get a json in the following form ([details here](https://docs.aws.amazon.com/textract/latest/dg/API_DetectDocumentText.html#API_DetectDocumentText_ResponseSyntax)):
 
