@@ -10,7 +10,10 @@ Resources:
       CompatibleRuntimes: 
         - python3.7
       Content: 
-        S3Bucket: aws-textract-workshop
+        S3Bucket: !Join
+        - "-"
+        - - "aws-textract-workshop"
+          - !Ref 'AWS::Region'
         S3Key: bootstrap/elasticlibs.zip
       Description: Layer for elasticsearch libraries (elasticsearch, aws-requests-auth, requests-aws4auth)
       LayerName: ElasticLibs

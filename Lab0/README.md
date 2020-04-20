@@ -7,11 +7,13 @@
 
 AWS Cloudformation provides the ability to describe and provision the infrastucture resources on AWS. Thanks to template files (Infrastructure as code), we will deploy 'Stacks' (a stack is a set of resources that work together to achieve something).
 
-To setup the initial environment, click on launch stack button:
+To setup the initial environment, click on launch stack button with your prefered region:
 
 Region | Button
 ------------ | -------------
-us-east-1 | [![Launch stack in us-east-1](../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=TextractApolloWorkshopStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop/bootstrap/cfn-template.yaml)
+us-east-1 | [![Launch stack in us-east-1](../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=TextractApolloWorkshopStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop-us-east-1/bootstrap/cfn-template.yaml)
+eu-west-1 | [![Launch stack in eu-west-1](../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=TextractApolloWorkshopStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop-eu-west-1/bootstrap/cfn-template.yaml)
+ap-southeast-1 | [![Launch stack in ap-southeast-1](../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=TextractApolloWorkshopStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop-ap-southeast-1/bootstrap/cfn-template.yaml)
 
 - In step 1, we'll use a template already available in Amazon S3. just click **Next** in the bottom.
 - In step 2, provide a name to your stack. We don't have any parameters. Click **Next** in the bottom.
@@ -22,7 +24,7 @@ us-east-1 | [![Launch stack in us-east-1](../images/launch-stack.svg)](https://c
 
 Wait a minute to let Cloudformation create your resources (you can refresh the Events to see the evolution).
 
-Once it's done, you can see all resources created by the CloudFormation stack in [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1). You should get the following ressources:
+Once it's done, you can see all resources created by the CloudFormation stack in [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home). You should get the following ressources:
 
 ![Stack CloudFormation](images/stack.png)
 
@@ -41,7 +43,7 @@ In order to trigger the process when a document is uploaded in S3, we need to co
 
   ![S3 events](images/S3Event.png)
 
-3. In [Lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1), click on your *documentTextract-xyz* function, you should now see S3 as an event trigger on the left:
+3. In [Lambda console](https://console.aws.amazon.com/lambda/home), click on your *documentTextract-xyz* function, you should now see S3 as an event trigger on the left:
 
   ![S3 as a trigger for the Lambda function](images/S3Event2.png)
 

@@ -125,7 +125,7 @@ And the following one at the end of the lambda_handler function:
     entities = document_analyzer.extract_entities(list(pages.values()))
     print(entities)
 ```
-Hit **Save** in the top right corner of the screen and then click **Test**. Observe the result in [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentAnalysis): 
+Hit **Save** in the top right corner of the screen and then click **Test**. Observe the result in [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentAnalysis): 
 
 ```
 [{'Text': 'SUNDAY July 6, 1969', 'Type': 'DATE'}, {'Text': 'NASA', 'Type': 'ORGANIZATION'}, {'Text': 'Neil A. Armstrong', 'Type': 'PERSON'}, ...]

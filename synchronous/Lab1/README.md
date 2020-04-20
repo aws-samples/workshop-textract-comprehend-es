@@ -16,7 +16,7 @@
   
 
 ## Lambda (step 3)
-In [Lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions), click on your *documentTextract-xyz* function, scroll down to edit code inside the browser. Replace the code with the following one and click **Save**:
+In [Lambda console](https://console.aws.amazon.com/lambda/home#/functions), click on your *documentTextract-xyz* function, scroll down to edit code inside the browser. Replace the code with the following one and click **Save**:
 
 ```python
 import urllib
@@ -52,7 +52,7 @@ You can use one of those pictures:
  - [apollo13.png](../../documents/apollo13.png) with a 90 degree rotation
  - [apollo13-summary.png](../../documents/apollo13-summary.png) which contains underlining and overlining of some text.
 
-If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentTextract), you will be able to display the output of your lambda execution. You should get a json in the following form ([details here](https://docs.aws.amazon.com/textract/latest/dg/API_DetectDocumentText.html#API_DetectDocumentText_ResponseSyntax)):
+If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentTextract), you will be able to display the output of your lambda execution. You should get a json in the following form ([details here](https://docs.aws.amazon.com/textract/latest/dg/API_DetectDocumentText.html#API_DetectDocumentText_ResponseSyntax)):
 
 ```json
 {
@@ -92,7 +92,7 @@ Once we have the full details, we need to parse the result to extract the import
         	
 	print(page)
 ```
-It's a simple way to retrieve all lines (BlockType = LINE) and to concatenate them. You can now [test](#test) your function again to see the content of your document, loading a new test image or re-uploading the same as before. In [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentTextract), you will see the plain text, extracted from the picture you've just uploaded.
+It's a simple way to retrieve all lines (BlockType = LINE) and to concatenate them. You can now [test](#test) your function again to see the content of your document, loading a new test image or re-uploading the same as before. In [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentTextract), you will see the plain text, extracted from the picture you've just uploaded.
 
 **! TIPS !** Instead of parsing the result of textract on your own, you can use [textract-extractor](https://github.com/aws-samples/amazon-textract-textractor) or [textract-response-parser](https://github.com/aws-samples/amazon-textract-response-parser)
 

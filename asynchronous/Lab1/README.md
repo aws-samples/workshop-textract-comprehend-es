@@ -18,7 +18,7 @@
 7. The second Lambda function call the Textract API (``GetDocumentTextDetection``) with the JobId provided in the SNS message, to get the result of the extraction.
   
 ## Lambda (step 3-4)
-In [Lambda console](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions), click on your *documentTextract-xyz* function, scroll down to edit code inside the browser. Replace the code with the following one and click **Save**:
+In [Lambda console](https://console.aws.amazon.com/lambda/home#/functions), click on your *documentTextract-xyz* function, scroll down to edit code inside the browser. Replace the code with the following one and click **Save**:
 
 ```python
 import urllib
@@ -57,7 +57,7 @@ We use the [``StartDocumentTextDetection``](https://docs.aws.amazon.com/textract
 ## Setup SNS (step 5)
 
 ### Create the SNS Topic
-In Amazon [SNS console](https://console.aws.amazon.com/sns/v3/home?region=us-east-1#/topics) (Simple Notification Service), click **Create Topic**.
+In Amazon [SNS console](https://console.aws.amazon.com/sns/v3/home#/topics) (Simple Notification Service), click **Create Topic**.
 
 Choose a name for your topic and leave the details as is, then click **Create topic** at the bottom of the page:
 
@@ -70,7 +70,7 @@ Copy the Topic ARN in a text document for later use.
 ### Give Textract access to the SNS Topic
 In order for Textract to publish messages in the topic, we need to give him the permissions to do so.
 
-In [IAM console](https://console.aws.amazon.com/iam/home?region=us-east-1), choose Roles on the naviagtion page and create a new Role. 
+In [IAM console](https://console.aws.amazon.com/iam/home), choose Roles on the naviagtion page and create a new Role. 
 
 In the role creation process (step 1), select **AWS service** as type of trusted entity and **EC2** as the service that will use this role (we'll change that in a minute). Then click **Next: Permissions**:
 
@@ -128,21 +128,21 @@ In the trust relationship screen, replace **ec2** with **textract**. You should 
 Once it is done, click **Update trust policy** button. With this policy, Textract is now able to assume the role. Copy the role ARN for later use.
 
 ### Update the lambda function 
-In [Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions), click on your *documentTextract-xyz* function, scroll down to **Environment variables** and add the following variables (retrieve the SNS topic ARN and Role ARN previously created) and click **Save**:
+In [Lambda](https://console.aws.amazon.com/lambda/home#/functions), click on your *documentTextract-xyz* function, scroll down to **Environment variables** and add the following variables (retrieve the SNS topic ARN and Role ARN previously created) and click **Save**:
 
 ![Lambda environment variables](images/lambda_env_var.png)
 
 ### Test
 In order to test the process, you need to upload an document in the *workshop-textract-xyz* S3 bucket. You can take any PDF from this [folder](../documents) and upload it to the bucket. In [S3 console](https://s3.console.aws.amazon.com/s3/buckets/), click on your *workshop-textract-xyz* bucket, and click on **Upload**.
 
-If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentTextract), you will be able to display the output of your lambda execution. You should get a json containing a ``JobId`` (see [documentation](https://docs.aws.amazon.com/textract/latest/dg/async-notification-payload.html) for details on the result). Copy that JobId, we will use it later for another test.
+If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentTextract), you will be able to display the output of your lambda execution. You should get a json containing a ``JobId`` (see [documentation](https://docs.aws.amazon.com/textract/latest/dg/async-notification-payload.html) for details on the result). Copy that JobId, we will use it later for another test.
 
 As for now, we don't have any subscription to the SNS Topic. Let's arrange that...
 
 ## Setup the 2nd Lambda function (step 6-7)
   
 ### Create the function that will process the result of Textract
-In [Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions), click on **Create function**, select **Author from scratch** and fill the basic information as follow, leave the permissions as is and click on **Create function** when it's done:
+In [Lambda](https://console.aws.amazon.com/lambda/home#/functions), click on **Create function**, select **Author from scratch** and fill the basic information as follow, leave the permissions as is and click on **Create function** when it's done:
 
 ![Create Function](images/create_function.png)
 
@@ -244,7 +244,7 @@ Give a name and paste the following json, replace the JobId placeholder with the
 ```
 Click on **Test** button, you should get a green panel with a success result.
 
-If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentAnalysis), you will be able to display the output of your lambda execution. You should get a json in the following form ([details here](https://docs.aws.amazon.com/textract/latest/dg/API_DetectDocumentText.html#API_DetectDocumentText_ResponseSyntax)):
+If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentAnalysis), you will be able to display the output of your lambda execution. You should get a json in the following form ([details here](https://docs.aws.amazon.com/textract/latest/dg/API_DetectDocumentText.html#API_DetectDocumentText_ResponseSyntax)):
 
 ```json
 {
@@ -376,7 +376,7 @@ def lambda_handler(event, context):
 
 ```
 
-Hit **Save** in the top right corner of the screen and then click **Test**. Observe the result in [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentAnalysis).
+Hit **Save** in the top right corner of the screen and then click **Test**. Observe the result in [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentAnalysis).
 
 In this asynchronous version, we could have used Amazon SQS (Queue) to poll the SNS Topic to deal with the load when you need to scale up agressively (thousands of documents uploaded on S3 within seconds). 
 Indeed, when dealing with such a quantity of documents, Lambda will start many Textract jobs concurrently and that could result in errors (``LimitExceededException``) and untreated documents. To avoid this, using SQS will decouple the SNS Topic from the Lambda and provide a buffer. Thus, if a document cannot be treated immediatly, it remain in the queue until the number of concurrent Textract jobs is below the service limit.

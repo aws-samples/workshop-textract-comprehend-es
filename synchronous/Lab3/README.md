@@ -9,13 +9,15 @@ We first need to setup an Elasticsearch *domain* (a cluster) and secure the Kiba
 
 Region | Button
 ------------ | -------------
-us-east-1 | [![Launch stack in us-east-1](../../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=ElasticStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop/bootstrap/es-template.yaml)
+us-east-1 | [![Launch stack in us-east-1](../../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=DocumentIndexingStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop-us-east-1/bootstrap/es-template.yaml)
+eu-west-1 | [![Launch stack in eu-west-1](../../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=DocumentIndexingStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop-eu-west-1/bootstrap/es-template.yaml)
+ap-southeast-1 | [![Launch stack in ap-southeast-1](../../images/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=DocumentIndexingStack&templateURL=https://s3.amazonaws.com/aws-textract-workshop-ap-southeast-1/bootstrap/es-template.yaml)
 
 In the last step, you will need to check several checkboxes to allow the creation of IAM resources:
 
 ![Capabilities](images/cloudformation.png)
 
-It may take few minutes to deploy everything (you can have a look at the rest of the lab but you will need resources to be ready to complete it). In the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1), in Outputs tab, you should have the following. Keep these information in safe place for later use (copy past in text document or keep browser tab opened). You should also receive an email with a password to access the Kibana interface.
+It may take few minutes to deploy everything (you can have a look at the rest of the lab but you will need resources to be ready to complete it). In the [CloudFormation Console](https://console.aws.amazon.com/cloudformation/home), in Outputs tab, you should have the following. Keep these information in safe place for later use (copy past in text document or keep browser tab opened). You should also receive an email with a password to access the Kibana interface.
 
 ![CloudFormation outputs for Elasticsearch and Role](images/escloudformation.png)
 
@@ -27,7 +29,7 @@ More details on Cognito authentication for Kibana [here](https://docs.aws.amazon
 In this lab, we will focus on step 7, in which we will index the data in ElasticSearch. See labs [1](../Lab1/README.md#archi_sync) and [2](../Lab2/README.md#archi_sync) for the previous steps.
 
 ## Dependencies for the lambda function
-As the function will interact with ElasticSearch, we need to provide some libraries. We'll do that using a [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). A layer is zip archive that contains libraries or dependencies you can use in a Lambda function without needing to include it in the Lambda package itself. In [Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1), click on your *documentTextract-xyz* function then click on **Layers**:
+As the function will interact with ElasticSearch, we need to provide some libraries. We'll do that using a [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html). A layer is zip archive that contains libraries or dependencies you can use in a Lambda function without needing to include it in the Lambda package itself. In [Lambda](https://console.aws.amazon.com/lambda/home), click on your *documentTextract-xyz* function then click on **Layers**:
 
 ![Layer](images/layer.png)
 
@@ -38,7 +40,7 @@ We'll also need to provide the URL of the ElasticSearch Domain. Scroll down to *
 ![Environment](images/lambda_var_es_host.png)
 
 ## Permissions
-The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home?region=us-east-1), select your domain, then click on **Modify access policy**
+The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click on **Modify access policy**
 
 ![Elasticsearch console](images/es_console.png)
 
@@ -138,7 +140,7 @@ At the end of the function add the following code:
 The code is quite simple. We create the json document we want to index and then do an HTTP POST with the appropriate parameters: URL, authorizations, headers and the document itself.
 
 ## Test
-Proceed as previously (upload an image in the S3 bucket). Verify in [Cloudwatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentTextract) there is no error. 
+Proceed as previously (upload an image in the S3 bucket). Verify in [Cloudwatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentTextract) there is no error. 
 
 Then open the url of Kibana (provided in Cloudformation outputs). You will need the password received by email to log on (note that final dot is not part of the password). Your username is your email address. After the first login to Kibana, You will be asked to change your password.
 

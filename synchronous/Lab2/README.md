@@ -72,7 +72,7 @@ Click **Save**. Few information to notice here:
 - We then call the [``DetectEntities``](https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectEntities.html) API to retrieve entities in the document. The API will return a list of [Entity](https://docs.aws.amazon.com/comprehend/latest/dg/API_Entity.html): the text, their position (offsets), a score for the level of confidence, and a type (PERSON, LOCATION, ORGANIZATION, DATE, ...). In our code, we select only a subset of all types and only the entities with a score higher than 0.9 over 1. You can test without that filter if you want to see everything that is returned by Comprehend.
 
 ### Test
-Proceed as in the previous lab. Upload a document to the *workshop-textract-xyz* S3 bucket and open the [Cloudwatch logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:prefix=/aws/lambda/documentTextract). Observe the result:
+Proceed as in the previous lab. Upload a document to the *workshop-textract-xyz* S3 bucket and open the [Cloudwatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentTextract). Observe the result:
 
 ```
 [{'Score': 0.9834662079811096, 'Type': 'PERSON', 'Text': 'Neil A. Armstrong', 'BeginOffset': 140, 'EndOffset': 156},{'Score': 0.9590600728988647, 'Type': 'LOCATION', 'Text': 'Houston, Texas', 'BeginOffset': 4530, 'EndOffset': 4544}, ...]
