@@ -42,7 +42,7 @@ We'll also need to provide the URL of the ElasticSearch Domain. Scroll down to *
 ## Permissions
 The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click **Actions** and select **Modify access policy**
 
-![Elasticsearch console](images/es_console.png)
+![Elasticsearch console](images/es_console-updated.png)
 
 In the policy editor, we will add permissions (`es:ESHttpPost`) for the Lambda execution role. Add the following block of JSON to the existing one (within the *Statement* array):
 
