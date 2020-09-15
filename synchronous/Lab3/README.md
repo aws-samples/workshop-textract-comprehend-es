@@ -40,7 +40,7 @@ We'll also need to provide the URL of the ElasticSearch Domain. Scroll down to *
 ![Environment](images/lambda_var_es_host.png)
 
 ## Permissions
-The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click **Actions** and select **Modify access policy**
+The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click **Actions** and select **Modify access policy**.
 
 ![Elasticsearch console](images/es_console-updated.png)
 
