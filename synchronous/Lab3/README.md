@@ -33,14 +33,14 @@ As the function will interact with ElasticSearch, we need to provide some librar
 
 ![Layer](images/layer.png)
 
-Scroll down and click **Add a layer**. In the newly opened window, select **"ElasticLibs"** in the dropdown under Name and the latest version under Version, click **Add** when it's done. In the function screen, click **Save** at the top.
+Scroll down and click **Add a layer**. In the newly opened window, select **"Custom layers"**, select **"ElasticLibs"** in the dropdown under Custom layers and the latest version under Version, click **Add**.
 
 We'll also need to provide the URL of the ElasticSearch Domain. Scroll down to **Environment variables** and add the following variable (key: ELASTIC_SEARCH_HOST, value: put the *ElasticsearchDomain* URL you got from CloudFormation), and click **Save**:
 
 ![Environment](images/lambda_var_es_host.png)
 
 ## Permissions
-The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click on **Modify access policy**
+The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click **Actions** and select **Modify access policy**
 
 ![Elasticsearch console](images/es_console.png)
 
