@@ -66,7 +66,7 @@ b. Change the "111111111" with your account ID (you can see it in the JSON block
 
 c. Replace "documentsearchapp" with the name of your Elasticsearch domain created in the stack (see Cloudformation outputs).
 
-At the end, you should have something like that (with your own values), **do not** copy past this block:
+At the end, you should have something like that (with your own values), **do not** copy paste this block:
 
 ```json
 {
@@ -94,7 +94,7 @@ At the end, you should have something like that (with your own values), **do not
 Click **Submit** on the bottom right of the page and wait few seconds so it is taken into account (Domain status needs to be active" again).
 
 ## Update the code
-Back to yout lambda function, below `import boto3`, add the following code:
+Back to your lambda function, below `import boto3`, add the following code:
 
 ```python
 import os
