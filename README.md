@@ -17,6 +17,9 @@ To achieve this process today, many companies extract data from documents manual
 
 Amazon Textract overcomes these challenges by using machine learning, providing the ability to "read" virtually any type of document to extract text and data without the need of custom code. Once the information is captured, you can use other services like Amazon Comprehend to get insight on it (key phrases, people, dates, ...), Amazon Translate to translate it, Elasticsearch to index it for later search.
 
+**New (Nov 16, 2020)**: You can now use Textract with handwriting documents. And it also supports 5 new languages (french, spanish, portuguese, italian and german) in addition to english.
+
+
 ### Objective of the workshop
 
 The workshop will demonstrate the usage of the following AWS services to achieve the process mentioned above:
