@@ -1,4 +1,4 @@
-[Workshop](../../README.md) | [Lab 0](../../Lab0/README.md) | [Lab 1](../../Lab1/README.md) | [Lab 2](../../Lab2/README.md)
+[Workshop](../../README.md) | [Lab 0](../../Lab0/README.md) | [Lab 1](../Lab1/README.md) | [Lab 2](../Lab2/README.md)
 
 # LAB 3 - Synchronous - Index documents and entities in Elasticsearch
 
