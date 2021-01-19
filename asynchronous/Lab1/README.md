@@ -133,7 +133,7 @@ In [Lambda](https://console.aws.amazon.com/lambda/home#/functions), click on you
 ![Lambda environment variables](images/lambda_env_var.png)
 
 ### Test
-In order to test the process, you need to upload an document in the *workshop-textract-xyz* S3 bucket. You can take any PDF from this [folder](../documents) and upload it to the bucket. In [S3 console](https://s3.console.aws.amazon.com/s3/buckets/), click on your *workshop-textract-xyz* bucket, and click on **Upload**.
+In order to test the process, you need to upload an document in the *workshop-textract-xyz* S3 bucket. You can take any PDF from this [folder](../../documents) and upload it to the bucket. In [S3 console](https://s3.console.aws.amazon.com/s3/buckets/), click on your *workshop-textract-xyz* bucket, and click on **Upload**.
 
 If you go to [CloudWatch logs](https://console.aws.amazon.com/cloudwatch/home#logs:prefix=/aws/lambda/documentTextract), you will be able to display the output of your lambda execution. You should get a json containing a ``JobId`` (see [documentation](https://docs.aws.amazon.com/textract/latest/dg/async-notification-payload.html) for details on the result). Copy that JobId, we will use it later for another test.
 
