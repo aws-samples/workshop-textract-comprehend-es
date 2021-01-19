@@ -1,4 +1,4 @@
-[Workshop](../../README.md) | [Lab 0](../../Lab0/README.md) | [Lab 1](../../Lab1/README.md)
+[Workshop](../../README.md) | [Lab 0](../../Lab0/README.md) | [Lab 1](../Lab1/README.md)
 
 # LAB 2 - Asynchronous - Extract entities with Comprehend
 
