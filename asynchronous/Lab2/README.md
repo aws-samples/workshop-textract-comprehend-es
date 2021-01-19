@@ -24,7 +24,7 @@ The function needs persmissions to invoke Comprehend. Let's update the role auto
 
 In the new window, click on **Attach policies**, search for *ComprehendReadOnly*, check it. Then search for *TranslateReadOnly*, check it and click **Attach policy**:
 
-![Attach Comprehend permissions](../../Synchronous/Lab2/images/comprehend_managed_role.png)
+![Attach Comprehend permissions](../../synchronous/Lab2/images/comprehend_managed_role.png)
 
 Back to the lambda function screen, refresh the page, you should now see Amazon Comprehend and Amazon Translate in the *Permissions* tab. Our lambda function is now able to call both Comprehend and Translate APIs:
 
