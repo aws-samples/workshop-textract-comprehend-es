@@ -15,10 +15,10 @@ In this lab, we will use the text previously extracted with Textract and apply C
 
 In step 6, we call the ``DetectEntities`` API from Comprehend in the Lambda function we created (*documentTextract-xyz*). 
   
-## Comprehend in the lambda function
+## Comprehend in the Lambda function
 
 ### Add permissions to the function
-The function needs persmissions to invoke Comprehend. Let's update the role automatically created during the function creation. Click on the *documentTextract-xyz* function, then scroll down to the **Execution Role** and click **View the textract-index-stack-LambdaExecutionRole-xyz**:
+The function needs persmissions to invoke Comprehend. Let's update the role automatically created during the function creation. Click on the *documentTextract-xyz* function, then click the **Configuration** tab, then choose **Permissions**  and click **textract-index-stack-LambdaExecutionRole-xyz**:
 
 ![Execution role for documentTextract function](images/execution_role.png)
 
@@ -26,13 +26,13 @@ In the new window, click on **Attach policies**, search for *ComprehendReadOnly*
 
 ![Attach Comprehend permissions](images/comprehend_managed_role.png)
 
-Back to the lambda function screen, refresh the page, you should now see Amazon Comprehend in the **Permissions** tab. Our lambda function is now able to call Comprehend APIs:
+Back to the Lambda function screen, refresh the page, you should now see Amazon Comprehend in the **Permissions** tab. Our Lambda function is now able to call Comprehend APIs:
 
 ![Comprehend for documentTextract function](images/comprehend_lambda.png)
 
-### Update the lambda code to call Comprehend
+### Update the Lambda code to call Comprehend
 
-In the source code of your lambda function (index.py), add the following line after `import boto3`:
+In the source code of your Lambda function (index.py), add the following line after `import boto3`:
 
 ```python
 comprehend = boto3.client('comprehend')
@@ -62,7 +62,7 @@ And the following at the end of the handler function:
 	print(selected_entities)
 ```
 
-Click **Save**. Few information to notice here:
+Click **Deploy**. Few details to notice here:
 
 - Before calling the ``DetectEntities`` API, we need to be aware of few [limits](https://docs.aws.amazon.com/comprehend/latest/dg/API_DetectEntities.html#API_DetectEntities_RequestParameters) of the service: 
 
