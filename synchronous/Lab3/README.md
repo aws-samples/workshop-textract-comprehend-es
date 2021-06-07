@@ -33,16 +33,16 @@ As the function will interact with ElasticSearch, we need to provide some librar
 
 ![Layer](images/layer.png)
 
-Scroll down and click **Add a layer**. In the newly opened window, select **"ElasticLibs"** in the dropdown under Name and the latest version under Version, click **Add** when it's done. In the function screen, click **Save** at the top.
+Scroll down and click **Add a layer**. In the newly opened window, select **"Custom layers"**, select **"ElasticLibs"** in the dropdown under Custom layers and the latest version under Version, click **Add**.
 
 We'll also need to provide the URL of the ElasticSearch Domain. Scroll down to **Environment variables** and add the following variable (key: ELASTIC_SEARCH_HOST, value: put the *ElasticsearchDomain* URL you got from CloudFormation), and click **Save**:
 
 ![Environment](images/lambda_var_es_host.png)
 
 ## Permissions
-The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click on **Modify access policy**
+The function needs permissions to access ElasticSearch. As mentioned above, the domain is currently protected with Cognito. Go to [ElasticSearch service console](https://console.aws.amazon.com/es/home), select your domain, then click **Actions** and select **Modify access policy**.
 
-![Elasticsearch console](images/es_console.png)
+![Elasticsearch console](images/es_console-updated.png)
 
 In the policy editor, we will add permissions (`es:ESHttpPost`) for the Lambda execution role. Add the following block of JSON to the existing one (within the *Statement* array):
 
@@ -66,7 +66,7 @@ b. Change the "111111111" with your account ID (you can see it in the JSON block
 
 c. Replace "documentsearchapp" with the name of your Elasticsearch domain created in the stack (see Cloudformation outputs).
 
-At the end, you should have something like that (with your own values), **do not** copy past this block:
+At the end, you should have something like that (with your own values), **do not** copy paste this block:
 
 ```json
 {
@@ -94,7 +94,7 @@ At the end, you should have something like that (with your own values), **do not
 Click **Submit** on the bottom right of the page and wait few seconds so it is taken into account (Domain status needs to be active" again).
 
 ## Update the code
-Back to yout lambda function, below `import boto3`, add the following code:
+Back to your lambda function, below `import boto3`, add the following code:
 
 ```python
 import os
