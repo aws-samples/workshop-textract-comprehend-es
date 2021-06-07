@@ -39,7 +39,7 @@ In order to trigger the process when a document is uploaded in S3, we need to co
 
   ![S3 properties](images/S3Properties.png)
 
-2. Scroll down to "Advanced settings" and choose "Events", choose "Add notification" and then fill as follow. Thus, each time an object is created, the lambda function will be triggered:
+2. Scroll down to "Event notifications" and choose "Create event notification", then fill as follow. Thus, each time an object is created, the Lambda function will be triggered:
 
   ![S3 events](images/S3Event.png)
 
